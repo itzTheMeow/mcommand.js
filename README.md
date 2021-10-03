@@ -5,6 +5,10 @@ _make an issue/pr if something goes wrong_
 
 there are no item types yet
 
+Commands not being done (yet)
+
+- https://minecraft.fandom.com/wiki/Commands/loot
+
 ## How to Use
 
 There is no NPM package. (yet?)
