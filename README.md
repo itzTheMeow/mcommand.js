@@ -3,6 +3,8 @@
 **THIS IS NOT COMPLETE AND MAY CHANGE IN THE FUTURE**
 _make an issue/pr if something goes wrong_
 
+there are no item types yet
+
 ## How to Use
 
 There is no NPM package. (yet?)
@@ -94,3 +96,5 @@ Please note that the SayCommand, SetblockCommand, etc are HELPERS and will not s
   - There is no mod/plugin custom command support.
   - You can set the usePrefix argument to true in order to use minecraft:commands if you are on a server.
   - If you want this kind of support see Notes above.
+- What's the mod for?
+  - The mod is/was used to get the block/item ids as there's no list online.
