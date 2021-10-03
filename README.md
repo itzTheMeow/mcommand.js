@@ -8,6 +8,7 @@ there are no item types yet
 Commands not being done (yet)
 
 - https://minecraft.fandom.com/wiki/Commands/loot
+- https://minecraft.fandom.com/wiki/Commands/item
 
 ## How to Use
 
