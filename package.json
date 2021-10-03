@@ -1,0 +1,20 @@
+{
+  "name": "minecraft-thing",
+  "version": "0.0.1",
+  "description": "AAAA",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node lib/index.js",
+    "build": "tsc -b tsconfig.json"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/node": "^14.0.24",
+    "typescript": "^3.9.2"
+  },
+  "dependencies": {
+  },
+  "engines": {
+    "node": ">=14.x"
+  }
+}
