@@ -4,7 +4,7 @@
   "description": "AAAA",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node lib/index.js",
+    "start": "npm run build && node libr/index.js",
     "build": "tsc -b tsconfig.json"
   },
   "keywords": [],
@@ -12,8 +12,7 @@
     "@types/node": "^14.0.24",
     "typescript": "^3.9.2"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "engines": {
     "node": ">=14.x"
   }

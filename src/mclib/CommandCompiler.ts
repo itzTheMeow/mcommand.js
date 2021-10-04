@@ -31,7 +31,12 @@ export default class CommandCompiler {
     let str = this.template.replace(
       "%cmds%",
       this.commands
-        .map((c) => this.commandOutline.replace("%cmd%", c.startsWith("/") ? c.substring(1) : c))
+        .map((c) =>
+          this.commandOutline.replace(
+            "%cmd%",
+            (c.startsWith("/") ? c.substring(1) : c).replace(/\\'/g, "'").replace(/'/g, "\\'")
+          )
+        )
         .join(",")
     );
     if (str.length > Limits.CommandBlockLimit)

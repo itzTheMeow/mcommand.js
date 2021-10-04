@@ -59,7 +59,7 @@ export interface BlockNBT {
 export interface ItemNBT {
   Enchantments?: EnchantmentNBT[];
   display?: {
-    Name?: TextNBT;
+    Name?: TextNBT[];
     color?: number;
     Lore?: TextNBT[];
   };
@@ -202,19 +202,29 @@ export class NBTBuilder {
       let newNBT: string[] = [];
       Object.keys(obj).forEach((k, ki) => {
         let val = Object.values(obj)[ki];
-        if (Array.isArray(val))
+        if (Array.isArray(val)) {
           val = `[${val
             .map((v) => {
               if (typeof v == "object") v = strgfy(v);
               return v;
             })
             .join(",")}]`;
-        else if (val as TextNBT)
-          val =
-            (typeof val == "number" ? "" : useQuotes ? '"' : "'") +
-            (typeof val == "object" ? JSON.stringify(val) : String(val)).replace(/'/g, "\\'") +
-            (typeof val == "number" ? "" : useQuotes ? '"' : "'");
-        else if (typeof val == "object") val = strgfy(val);
+        } else if (val as TextNBT) {
+          if (k == "display" && (val as any).Name) {
+            (val as any).Name = `'${JSON.stringify((val as any).Name)}'`;
+            val = JSON.stringify(val)
+              .replace(/"\\"/g, '"')
+              .replace(/\\"/g, '"')
+              .replace(/""/g, '"')
+              .replace(/"'/g, "'")
+              .replace(/'"/g, "'");
+            // this is very specific and probably wont work properly if any other display values are added lmfao
+          } else
+            val =
+              (typeof val == "number" ? "" : useQuotes ? '"' : "'") +
+              (typeof val == "object" ? JSON.stringify(val) : String(val)).replace(/'/g, "\\'") +
+              (typeof val == "number" ? "" : useQuotes ? '"' : "'");
+        } else if (typeof val == "object") val = strgfy(val);
         if (useQuotes) newNBT.push(`"${k}":${val}`);
         else newNBT.push(`${k}:${val}`);
       });
