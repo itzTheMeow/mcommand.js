@@ -1,6 +1,10 @@
+import AttributeOperations from "./extras/AttributeOperations";
+import Attributes from "./extras/Attributes";
+import AttributeSlots from "./extras/AttributeSlots";
 import Blocks from "./extras/Blocks";
 import Colors from "./extras/Colors";
 import EffectList from "./extras/EffectList";
+import Enchantments from "./extras/Enchantments";
 import Entities from "./extras/Entities";
 import Items from "./extras/Items";
 
@@ -8,6 +12,12 @@ import Items from "./extras/Items";
 
 type ByteBoolean = "0b" | "1b";
 type NumberBoolean = 0 | 1;
+
+// https://minecraft.fandom.com/wiki/Enchanting#Item_data
+export interface EnchantmentNBT {
+  id: Enchantments;
+  lvl: number;
+}
 
 export interface EffectNBT {
   Id: EffectList;
@@ -44,6 +54,43 @@ export interface BlockNBT {
   // Lightning Rod
   powered?: boolean;
   facing?: "east" | "south" | "north" | "west";
+}
+
+export interface ItemNBT {
+  Enchantments?: EnchantmentNBT[];
+  display?: {
+    Name?: TextNBT;
+    color?: number;
+    Lore?: TextNBT[];
+  };
+  AttributeModifiers?: {
+    Slot: AttributeSlots;
+    AttributeName: Attributes;
+    Name: Attributes;
+    Amount: number;
+    Operation: AttributeOperations;
+    UUID: ["I; 1", number, number, number];
+  }[];
+  Unbreakable?: ByteBoolean;
+  SkullOwner?: string;
+  HideFlags?: number;
+  CanDestroy?: Blocks[];
+  PickupDelay?: number;
+  Age?: number;
+  generation?: "Original" | "Copy of Original" | "Copy of a copy" | "Tattered";
+  Fireworks?: {
+    Explosions: {
+      Colors: string;
+      FadeColors: string;
+      Flicker: string;
+      Trail: string;
+      Type: string;
+    }[];
+    Flight: string;
+  };
+  CanPlaceOn?: Blocks[];
+  BlockEntityTag?: BlockNBT;
+  BlockStateTag?: { [key: string]: string | number };
 }
 
 export interface EntityNBT {
@@ -145,7 +192,7 @@ export interface TextNBT {
   };
 }
 
-type NBT = EffectNBT | BlockNBT | EntityNBT | TextNBT;
+type NBT = EffectNBT | BlockNBT | ItemNBT | EntityNBT | TextNBT;
 
 export class NBTBuilder {
   constructor(public NBT: NBT) {}
