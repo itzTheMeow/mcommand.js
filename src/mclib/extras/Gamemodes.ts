@@ -1,10 +1,2 @@
-type Gamemodes =
-  | "adventure"
-  | "!adventure"
-  | "creative"
-  | "!creative"
-  | "survival"
-  | "!survival"
-  | "spectator"
-  | "!spectator";
+type Gamemodes = "adventure" | "creative" | "survival" | "spectator";
 export default Gamemodes;
