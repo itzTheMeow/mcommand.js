@@ -1,6 +1,7 @@
 package com.example.examplemod;
 
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -73,9 +74,15 @@ public class ExampleMod
     public static class RegistryEvents {
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
             for (Map.Entry<ResourceKey<Block>, Block> entry : blockRegistryEvent.getRegistry().getEntries()) {
                 LOGGER.info("Block {}", entry.getValue().getRegistryName());
+            }
+        }
+
+        @SubscribeEvent
+        public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
+            for (Map.Entry<ResourceKey<Item>, Item> entry : itemRegistryEvent.getRegistry().getEntries()) {
+                LOGGER.info("Item {}", entry.getValue().getRegistryName());
             }
         }
     }
