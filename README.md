@@ -103,3 +103,24 @@ Please note that the SayCommand, SetblockCommand, etc are HELPERS and will not s
   - If you want this kind of support see Notes above.
 - What's the mod for?
   - The mod is/was used to get the block/item ids as there's no list online.
+
+## TODO
+
+- Make the [execute](https://minecraft.fandom.com/wiki/Commands/execute) command a property of the Command class.
+- Following [commands](https://minecraft.fandom.com/wiki/Commands):
+  - /advancement
+  - /attribute
+  - /ban
+  - /ban-ip
+  - /banlist
+  - /bossbar
+  - /clear
+  - /clone
+  - /data
+  - /datapack
+  - /debug
+  - /defaultgamemode
+  - /deop
+  - /difficulty
+  - /effect
+  - /enchant
