@@ -15,9 +15,6 @@ onecmd.add(
 onecmd.add(
   new GiveCommand(new CommandEntitySelector("a"), "minecraft:netherite_sword", 1, {
     Enchantments: [{ id: "sharpness", lvl: 300 }],
-    display: {
-      Name: [{ text: "God Sword" }],
-    },
   })
 );
 
